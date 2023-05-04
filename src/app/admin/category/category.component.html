@@ -1,0 +1,73 @@
+<div class="card">
+    <div style="text-align: right; margin: right;" class="mb-3 mt-3">
+        <button (click)="addCategory()" class="btn btn-primary" data-bs-toggle="modal"
+            data-bs-target="#categorysModal">New Category</button>
+    </div>
+    <div style="margin:0rem 1rem 1rem 1rem !important;">
+        <div clss="col-12">
+            <div class="card">
+                <div class="card">
+                    <div class="table-responsive">
+                        <table class="table mb-0">
+                            <thead class="thead-light">
+                                <tr class="bg-light">
+                                    <th>#S.No</th>
+                                    <th>Name</th>
+                                    <th style="width:15%">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody class="customable">
+                                <tr
+                                    *ngFor="let x of category | paginate: { itemsPerPage: 5, currentPage: presentPage }; index as ItemIndex">
+                                    <td>{{ItemIndex+1}}</td>
+                                    <td>{{x.name}}</td>
+                                    <td style="width:15%">
+                                        <button (click)=" editCategory(x)" class="btn btn-secondary"
+                                            data-bs-toggle="modal" data-bs-target="#categorysModal"><i
+                                                class="bi bi-pencil-square"></i></button>
+                                        &nbsp;
+                                        <button (click)="delete(x.id)" class="btn btn-danger"><i
+                                                class="bi bi-trash3"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3">
+                                        <pagination-controls (pageChange)="presentPage = $event"></pagination-controls>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="categorysModal" tabindex="-1" aria-labelledby="categorysModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="categorysModalLabel">{{modalHeader}}</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form [formGroup]="categorysForms">
+                        <div class="mb-3">
+                            <input formControlName="name" [(ngModel)]="categorys.name" class="form-control" name="name"
+                                placeholder=" Enter Name">
+                        </div>
+                        <div class="mb-3">
+                            <textarea rows="5" formControlName="description" [(ngModel)]="categorys.description"
+                                class="form-control" name="description" placeholder="description"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button [disabled]="categorysForms.invalid" (click)="saveCategory()" type="button"
+                        class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

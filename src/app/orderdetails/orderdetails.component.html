@@ -1,0 +1,58 @@
+<div class="card">
+    <div style="margin:1rem">
+        <div class="row">
+            <div class="col-6">
+                <h2>Order Details</h2>
+            </div>
+            <div class="col-6">
+                <p style="float:right;font-weight:bold;margin-top:6px !important">Date :{{orderDetails.datePlaced |
+                    date}}</p>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-6 border-line">
+                <div class="form-group">
+                    <label for="">Name</label>
+                    <input name="name" disabled [value]="orderDetails.shippingDetails.name" type="text"
+                        class="form-control">
+
+                </div>
+                <div class="form-group">
+                    <label for="">Address</label>
+                    <input disabled name="addressLine1" [value]="orderDetails.shippingDetails.addressLine1" type="text"
+                        class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="">AddressLine2</label>
+                    <input disabled name="addressLine2" [value]="orderDetails.shippingDetails.addressLine2" type="text"
+                        class="form-control">
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="card-body">
+                    <h4 class="card-title">OrderSummary</h4>
+                    <ul class="list-group list-group-flush">
+                        <li *ngFor="let item of orderDetails.items" class="list-group-item">
+                            {{item.quantity}}x{{item.title}}
+                            <div class="float-end">
+                                {{item.totalPrice | currency:'INR':'symbol'}}
+                            </div>
+                        </li>
+                        <li class="list-group-item fw-bold">
+                            totalPrice
+                            <div class="float-end">
+                                {{orderDetails.amount | currency:'INR':'symbol'}}
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <a (click)="redirectToOrdersPage()" class="btn btn-primary ripple-surface"
+            style="min-width:230px;text-align:center"><i class="bi bi-arrow-left-circle"></i>Back To Orders
+        </a>
+
+    </div>
+</div>

@@ -1,0 +1,42 @@
+<div class="card">
+    <div style="margin:3rem !important;padding:30px;border-radius:10px"
+        class="col-md-8 col-lg-6 col-xl-4 offset-xl-1 shadow">
+        <form #f="ngForm" class="form-sign-in">
+            <h1 class="h3 mb-3 font-weight-normal">LOGIN</h1>
+            <input name="email" [(ngModel)]="userDetail.email" type="email" id="inputEmail" class="form-control"
+                placeholder="Email" required>
+            <input name="password" [(ngModel)]="userDetail.password" type="password" id="inputPassword"
+                class="form-control" placeholder="password" required>
+            <div class="checkbox mb-3">
+                <label>
+                    <input type="checkbox" value="remember-me">Remember me
+                </label>
+            </div>
+            <div style="--bs-gutter-x:0!important" class="row">
+                <button (click)="login()" [disabled]="!f.valid" class="btn btn-primary" type="submit">LOGIN</button>
+            </div>
+            <p class="text-center mt-3 text-secondary">
+                If you don't have account,please<a routerLink="/register">Register</a>
+            </p>
+        </form>
+        <div class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5">
+            <div class="text-white mb-3 mb-md-0">
+                copyright @ 2023. All rights reserved.
+            </div>
+            <div>
+                <a href="#!" class="text-white me-4">
+                    <i class="bi bi-facebook"></i>
+                </a>
+                <a href="#!" class="text-white me-4">
+                    <i class="bi bi-twitter"></i>
+                </a>
+                <a href="#!" class="text-white me-4">
+                    <i class="bi bi-google"></i>
+                </a>
+            </div>
+
+        </div>
+
+
+    </div>
+</div>

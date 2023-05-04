@@ -1,0 +1,55 @@
+<div class="card">
+    <div style="margin:1rem">
+        <h2>Shipping</h2>
+        <hr>
+        <div class="row">
+            <div class="col-6">
+                <form #f="ngForm">
+                    <div class="mb-3">
+                        <input #name="ngModel" placeholder="Name" name="name" [(ngModel)]="shipping.name" type="text"
+                            class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <input #addressLine1="ngModel" [(ngModel)]="shipping.addressLine1" type="text"
+                            placeholder="addressLine1" class="form-control" name="addressLine1">
+                    </div>
+                    <div class="mb-3">
+                        <input #addressLine2="ngModel" [(ngModel)]="shipping.addressLine2" type="text"
+                            class="form-control" placeholder="addressLine2" name="addressLine2">
+                    </div>
+                    <div class="mb-3">
+                        <input #city="ngModel" [(ngModel)]="shipping.city" name="city" class="form-control"
+                            placeholder="city">
+                    </div>
+                    <hr>
+                    <div class="mt-6">
+                        <button (click)="placeOrder()" [disabled]="!f.valid" class="btn btn-primary"><i
+                                class="bi bi-cart-fill"></i>place Order</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Order Summary</h4>
+                        <p class="card-text">You have {{totalItemsCount}} items in your shopping cart</p>
+                        <ul class="list-group list-group-flush">
+                            <li *ngFor="let item of _cartItems" class="list-group-item">
+                                {{item.quantity}} x {{item.title}}
+                                <div class="float-end">
+                                    {{item.totalPrice | currency:'INR':'symbol'}}
+                                </div>
+                            </li>
+                            <li class="list-group-item fw-bold">
+                                Total
+                                <div class="float-end">
+                                    {{totalPrice | currency:'INR':'symbol'}}
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

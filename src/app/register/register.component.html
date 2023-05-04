@@ -1,0 +1,29 @@
+<div class="card">
+   <div style="margin:2rem !important; padding:30px; border-radius: 10px;" class="col-mb-8 col-lg-6 col-xl-5">
+      <form #f="ngForm" class="form-signin">
+         <h1 class="h3 mb-3 font-weight-normal">Sign up</h1>
+
+         <input name="email" [(ngModel)]="userDetail.email" type="email" id="inputEmail" class="form-control mb-3"
+            placeholder="Email address" required>
+         <input name="firstName" [(ngModel)]="userDetail.firstName" type="text" id="inputFirstname"
+            class="form-control mb-3" placeholder="First Name" required>
+         <input name="lastName" [(ngModel)]="userDetail.lastName" type="text" id="inputLastName"
+            class="form-control mb-3" placeholder="Last Name" required>
+         <input name="displayName" [(ngModel)]="userDetail.displayName" type="text" id="inputDisplayName"
+            class="form-control mb-3" placeholder="Display Name" required>
+         <input name="password" [(ngModel)]="userDetail.password" type="password" id="inputPassword"
+            class="form-control mb-3" placeholder="Password" required>
+
+         <div style="--bs-gutter-x: 0 !important;" class="row">
+            <button (click)="registerNote()" [disabled]="!f.valid" class="btn btn-primary"
+               type="submit">REGISTER</button>
+         </div>
+
+         <div>
+            <p class="text-center mt-3 text-secondary">If you have account, Please <a routerLink="/login">Login</a> Now
+            </p>
+         </div>
+      </form>
+   </div>
+
+</div>
