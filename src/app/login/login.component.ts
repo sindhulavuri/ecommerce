@@ -35,11 +35,11 @@ export class LoginComponent {
       localStorage.setItem('loggedInUserId', userDetail!.id);
       localStorage.setItem('isAdmin', userDetail!.isAdmin ? 'true' : 'false');
 
-      this.toastr.success('login successfully');
+      this.toastr.success('login successfully...!');
       this.router.navigate(['/products']);
     }
     else {
-      this.toastr.error('In valid credentials...')
+      this.toastr.error('In valid credentials!')
     }
   }
   handleError(response: any) {
