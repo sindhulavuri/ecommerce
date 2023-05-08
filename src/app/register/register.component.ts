@@ -17,11 +17,11 @@ export class RegisterComponent {
   registerNote() {
     this.aService.register(this.userDetail)
       .then(response => {
-        this.toastr.success('registration successful..');
+        this.toastr.success('registration successful....!');
         this.router.navigate(['/login']);
       })
       .catch(error => {
-        this.toastr.error('Internal server error...');
+        this.toastr.error('Internal server error...!');
       })
   }
 
